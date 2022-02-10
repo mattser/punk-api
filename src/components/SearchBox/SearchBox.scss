@@ -1,0 +1,14 @@
+.search {
+
+  margin-top: 20px;
+
+  &__heading {
+    text-align: center;
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+}
