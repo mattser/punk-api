@@ -6,7 +6,7 @@ import './Navbar.scss'
 const Navbar = (props) => {
   return (
     <section className='navigation'>
-      <h1>Poongle</h1>
+      <h1>Pungle</h1>
       <p><i>The Punk API search Engine</i></p>
       <SearchBox handleInput={props.handleInput} />
       <Slider handleInput={props.handleInput} value={props.abv} type="abv" min="0" max="12" heading="Minimum ABV = "/>
