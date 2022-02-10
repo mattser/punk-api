@@ -1,0 +1,19 @@
+.card-list__card {
+  border: 1px solid black;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  width: 240px;
+  border-radius: 10px;
+  &--image {
+    height: 200px;
+    width: auto;
+  }
+  &--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+  }
+}
