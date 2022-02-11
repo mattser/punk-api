@@ -10,7 +10,7 @@ const CardList = (props) => {
 
   const beersList = props.beers.filter(beer => {
     if (props.acidic) {
-      return beer.ph < 4
+      return beer.ph < 4 && beer.ph
     } else {
       return beer
     }

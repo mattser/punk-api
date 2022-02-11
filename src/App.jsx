@@ -19,7 +19,7 @@ const App = () => {
       .then(response => response.json())
       .then(response => setBeers(response));
   }
-  useEffect( () => getBeers() ,[]);
+  useEffect( () => getBeers() ,[searchParams]);
 
   const handleInput = (event) => {
     const tempParams = {...searchParams};
@@ -35,7 +35,6 @@ const App = () => {
       tempParams.page++;
     }
     setSearchParams(tempParams);
-    getBeers();
   }
 
   const createFetchUrl = () => {
@@ -44,7 +43,7 @@ const App = () => {
     url += `?page=${searchParams.page}`
     if(searchParams.name) url+= `&beer_name=${searchParams.name}`;
     if(searchParams.abv) url +=`&abv_gt=${searchParams.abv}`;
-    if(searchParams.year) url += `&brewed_before=01-${searchParams.year}`
+    if(searchParams.year) url += `&brewed_before=12-${searchParams.year}`
     return url;
   }
 
