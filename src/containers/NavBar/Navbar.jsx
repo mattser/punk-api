@@ -9,9 +9,8 @@ const Navbar = (props) => {
       <p><i>Punk API Search Engine</i></p>
       <SearchBox handleInput={props.handleInput} />
       <Slider handleInput={props.handleInput} value={props.abv} type="abv" min="0" max="12" heading="Minimum ABV = "/>
-      <Slider handleInput={props.handleInput} value={props.year} type="year" min="2007" max="2022" heading="First Brewed = "/>
-      <h3>{"Acidic? (pH < 4)"}</h3>
-      <input type="checkbox" id="acidic" value={props.acidic} onInput={props.toggleAcidic} />
+      <Slider handleInput={props.handleInput} value={props.year} type="year" min="2008" max="2022" heading="First Brew Date Before = "/>
+      <Slider handleInput={props.handlePhInput} value={props.maxPh} type="ph" min="4" max="7" heading="Max pH =" />
     </section>
   )
 }

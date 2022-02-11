@@ -18,8 +18,9 @@ const App = () => {
     fetch(createFetchUrl())
       .then(response => response.json())
       .then(response => setBeers(response));
-  }
-  useEffect( () => getBeers() ,[searchParams]);
+  };
+
+  useEffect( () => getBeers() , [searchParams]);
 
   const handleInput = (event) => {
     const tempParams = {...searchParams};
@@ -43,20 +44,20 @@ const App = () => {
     url += `?page=${searchParams.page}`
     if(searchParams.name) url+= `&beer_name=${searchParams.name}`;
     if(searchParams.abv) url +=`&abv_gt=${searchParams.abv}`;
-    if(searchParams.year) url += `&brewed_before=12-${searchParams.year}`
+    if(searchParams.year) url += `&brewed_before=01-${searchParams.year}`
     return url;
   }
 
-  const [acidic,setAcidic] = useState(false);
+  const [maxPh,setMaxPh] = useState(7);
 
-  const toggleAcidic = (event) => {
-    setAcidic(!acidic);
+  const handlePhInput = (event) => {
+    setMaxPh(event.target.value);
   }
 
   return (
     <div className="App">
-      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} acidic={acidic} toggleAcidic={toggleAcidic}/>
-      <Main beers={beers} handleInput={handleInput} page={searchParams.page} acidic={acidic} />
+      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} maxPh={maxPh} handlePhInput={handlePhInput} />
+      <Main beers={beers} handleInput={handleInput} page={searchParams.page} maxPh={maxPh} />
     </div>
   );
 }
