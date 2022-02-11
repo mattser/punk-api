@@ -8,9 +8,16 @@ const CardList = (props) => {
     return input.map((beer,index) => <Card key={index} data={beer}/>)
   }
 
+  const beersList = props.beers.filter(beer => {
+    if (props.acidic) {
+      return beer.ph < 4
+    } else {
+      return beer
+    }
+  })
   return (
     <section className='card-list'>
-      {props.beers && makeCard(props.beers) }
+      {props.beers && makeCard(beersList) }
     </section>
   )
 }
