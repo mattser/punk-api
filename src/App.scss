@@ -9,8 +9,14 @@
     width: 300px;
     border: 1px solid black;
     padding: 10px;
+    text-align: center;
   }
   .main-content {
     border: 1px solid black;
+
+    &__page {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
