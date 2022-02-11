@@ -1,10 +1,11 @@
 import React from 'react'
 import './ExpandedCard.scss'
+import cross from '../../assets/images/close.png'
 
 const ExpandedCard = ({data, expandCard}) => {
   return (
     <section className='expanded-card'>
-      <div className='expanded-card__content' onClick={expandCard}>
+      <div className='expanded-card__content'>
         <img className="expanded-card__content--image" src={data.image_url} />
           <div className='expanded-card__content--content'>
             <h2>{data.name}</h2>
@@ -13,6 +14,7 @@ const ExpandedCard = ({data, expandCard}) => {
             <p>{data.description}</p>
             <p>First Brew Date: {data.first_brewed}</p>
           </div>
+          <img className="expanded-card__content--close" src={cross} onClick={expandCard} />
       </div>
     </section>
   )

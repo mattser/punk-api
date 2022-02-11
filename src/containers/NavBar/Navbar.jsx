@@ -5,7 +5,7 @@ import Slider from '../../components/Slider/Slider'
 const Navbar = (props) => {
   return (
     <section className='navigation'>
-      <h1>Pungle</h1>
+      <span className='navigation__logo'><h1 className='pun'>Pun</h1><h1 className='gle'>gle</h1></span>
       <p><i>Punk API Search Engine</i></p>
       <SearchBox handleInput={props.handleInput} />
       <Slider handleInput={props.handleInput} value={props.abv} type="abv" min="0" max="12" heading="Minimum ABV = "/>
