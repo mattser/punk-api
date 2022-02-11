@@ -10,7 +10,7 @@ const Main = (props) => {
         <h2>{props.page}</h2>
         <PageArrow id="up" handleInput={props.handleInput}/>
       </span>
-      <CardList beers={props.beers}/>
+      <CardList beers={props.beers} acidic={props.acidic}/>
       <span className='main-content__page'>
         <PageArrow id="down" handleInput={props.handleInput}/>
         <h2>{props.page}</h2>

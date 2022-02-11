@@ -13,6 +13,7 @@ const App = () => {
   })
   const [beers,setBeers] = useState([]);
 
+
   const getBeers = () => {
     fetch(createFetchUrl())
       .then(response => response.json())
@@ -47,10 +48,16 @@ const App = () => {
     return url;
   }
 
+  const [acidic,setAcidic] = useState(false);
+
+  const toggleAcidic = (event) => {
+    setAcidic(!acidic);
+  }
+
   return (
     <div className="App">
-      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} />
-      <Main beers={beers} handleInput={handleInput} page={searchParams.page}/>
+      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} acidic={acidic} toggleAcidic={toggleAcidic}/>
+      <Main beers={beers} handleInput={handleInput} page={searchParams.page} acidic={acidic} />
     </div>
   );
 }
