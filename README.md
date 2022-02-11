@@ -1,4 +1,4 @@
-# Pungle! (PunkAPI Project)
+# ![Pungle (Punk API)](./screenshots/header.png)
 
 ### by mattser
 <br />
@@ -30,10 +30,15 @@ Current Features
 * Developed in React
 * Displays beverages in cards from the [Punk Api](https://punkapi.com/).
 * Filters and displays beverages based on name, alcohol content and first brew date.
-
-To Do: Filter by pH.
+* Toggle Selectors for Acidic Drinks
 
 Screenshots
 ===========
 
-*Nothing to show yet*
+*Search Parameters*
+
+![Search Parameters](./screenshots/search.png)
+
+*Card Examples*
+
+![Card Examples](./screenshots/cards.png)
