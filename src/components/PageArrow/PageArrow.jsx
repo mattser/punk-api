@@ -10,8 +10,7 @@ const PageArrow = (props) => {
   else symbol=rightArrow;
   return (
     <>
-      {/* <p className="arrow" id={props.id} onClick={props.handleInput}>{symbol}</p> */}
-      <img src={symbol} className="arrow" id={props.id} onClick={props.handleInput} />
+      <img src={symbol} className="arrow" id={props.id} onClick={props.handleInput} alt="" />
     </>
   )
 }

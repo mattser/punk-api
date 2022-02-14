@@ -1,0 +1,36 @@
+body {
+  background-color: #52b8cf;
+}
+.about {
+  padding: 50px;
+  margin: auto;
+  
+  &__content {
+    background-color: #9e8d90;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    border: 2px solid black;
+    border-radius: 50px;
+
+    &--title {
+      display: flex;
+      justify-content: center;
+      font-size: 2em;
+
+      .pun {
+        color: #52b8cf;
+      }
+      .gle {
+        color: black;
+      }
+    }
+    &--content {
+      p {
+        padding: 10px;
+      }
+    }
+  }
+}

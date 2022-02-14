@@ -1,7 +1,9 @@
 import React, {useEffect,useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Navbar from './containers/NavBar/Navbar';
 import Main from './containers/Main/Main';
+import About from './containers/About/About';
 
 const App = () => {
 
@@ -63,10 +65,17 @@ const App = () => {
   }
 
   return (
+    <Router>
     <div className="App">
-      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} maxPh={searchParams.maxPh} />
-      {beers && <Main beers={beers} handleInput={handleInput} page={searchParams.page} maxPh={searchParams.maxPh} />}
+      <Routes>
+        <Route path="/" element={<>
+          <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} maxPh={searchParams.maxPh} />
+          <Main beers={beers} handleInput={handleInput} page={searchParams.page} maxPh={searchParams.maxPh} /> </>}>
+        </Route>
+        <Route path="/about" element={<About />}></Route>
+      </Routes>
     </div>
+    </Router>
   );
 }
 
