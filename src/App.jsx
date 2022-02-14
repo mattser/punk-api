@@ -28,8 +28,6 @@ const App = () => {
     setBeers([...masterList].slice(0,25));
   }
 
-  useEffect( () => (!beersMaster) ? getMasterList() : getBeers(), [searchParams]);
-
   const getBeers = () => {
 
     let beerList = [...beersMaster]
@@ -39,6 +37,8 @@ const App = () => {
       && beer.ph < searchParams.maxPh);
     setBeers(beerList.slice((searchParams.page-1)*25,(searchParams.page)*25));
   };
+
+  useEffect( () => (!beersMaster) ? getMasterList() : getBeers(), [searchParams]);
 
   const handleInput = (event) => {
     const tempParams = {...searchParams};
