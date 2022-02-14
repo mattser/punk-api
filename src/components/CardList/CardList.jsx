@@ -5,7 +5,7 @@ import './CardList.scss'
 const CardList = (props) => {
   
   const makeCard = (input) => {
-    return input.filter(beer => beer.ph < props.maxPh && beer.ph).map((beer,index) => <Card key={index} data={beer}/>)
+    return input.map((beer,index) => <Card key={index} data={beer}/>)
   }
   
   return (

@@ -10,7 +10,7 @@ const Navbar = (props) => {
       <SearchBox handleInput={props.handleInput} />
       <Slider handleInput={props.handleInput} value={props.abv} type="abv" min="0" max="12" heading="Minimum ABV = "/>
       <Slider handleInput={props.handleInput} value={props.year} type="year" min="2008" max="2022" heading="First Brew Date Before = "/>
-      <Slider handleInput={props.handlePhInput} value={props.maxPh} type="ph" min="4" max="7" heading="Max pH =" />
+      <Slider handleInput={props.handleInput} value={props.maxPh} type="maxph" min="4" max="7" heading="Max pH =" />
     </section>
   )
 }
