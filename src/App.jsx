@@ -25,7 +25,7 @@ const App = () => {
       masterList.push(...tempBeer);
     }
     setBeersMaster([...masterList]);
-    setBeers([...masterList]);
+    setBeers([...masterList].slice(0,25));
   }
 
   useEffect( () => (!beersMaster) ? getMasterList() : getBeers(), [searchParams]);
@@ -37,23 +37,27 @@ const App = () => {
       && beer.abv > searchParams.abv 
       && beer.first_brewed.slice(-4) < searchParams.year
       && beer.ph < searchParams.maxPh);
-    setBeers(beerList);
+    setBeers(beerList.slice((searchParams.page-1)*25,(searchParams.page)*25));
   };
 
   const handleInput = (event) => {
     const tempParams = {...searchParams};
     if (event.target.id==="name") {
       tempParams.name = event.target.value.toLowerCase();
+      tempParams.page = 1;
     } else if (event.target.id==="abv") {
       tempParams.abv = event.target.value;
+      tempParams.page = 1;
     } else if (event.target.id==="year") {
       tempParams.year = event.target.value;
+      tempParams.page = 1;
     } else if (event.target.id==="down" && searchParams.page > 1) {
       tempParams.page--;
-    } else if (event.target.id==="up") {
+    } else if (event.target.id==="up" && !(beers.length < 25)) {
       tempParams.page++;
     } else if (event.target.id==="maxph") {
       tempParams.maxPh = event.target.value;
+      tempParams.page = 1;
     }
     setSearchParams(tempParams);
   }
