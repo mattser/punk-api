@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchBox from '../../components/SearchBox/SearchBox'
 import Slider from '../../components/Slider/Slider'
 
 const Navbar = (props) => {
   return (
     <section className='navigation'>
-      <span className='navigation__logo'><h1 className='pun'>Pun</h1><h1 className='gle'>gle</h1></span>
+      <Link to = "/about" style={{textDecoration: 'none'}}><span className='navigation__logo'><h1 className='pun'>Pun</h1><h1 className='gle'>gle</h1></span></Link>
       <p><i>Punk API Search Engine</i></p>
       <SearchBox handleInput={props.handleInput} />
       <Slider handleInput={props.handleInput} value={props.abv} type="abv" min="0" max="12" heading="Minimum ABV = "/>
