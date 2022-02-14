@@ -9,23 +9,41 @@ const App = () => {
     page: 1,
     name: "",
     abv: 0,
-    year: 2022
-  })
-  const [beers,setBeers] = useState([]);
+    year: 2022,
+    maxPh: 7
+  });
 
+  const [beersMaster,setBeersMaster] = useState(false);
+  const [beers,setBeers] = useState(false);
+
+  const getMasterList = async () => {
+    const masterList = [];
+    for (let i = 1; i <= 5; i++) {
+      let tempBeer = await fetch(`https://api.punkapi.com/v2/beers?page=${i}&per_page=80`)
+        .then(response => response.json());
+
+      masterList.push(...tempBeer);
+    }
+    setBeersMaster([...masterList]);
+    setBeers([...masterList]);
+  }
+
+  useEffect( () => (!beersMaster) ? getMasterList() : getBeers(), [searchParams]);
 
   const getBeers = () => {
-    fetch(createFetchUrl())
-      .then(response => response.json())
-      .then(response => setBeers(response));
-  };
 
-  useEffect( () => getBeers() , [searchParams]);
+    let beerList = [...beersMaster]
+    beerList = beerList.filter(beer => beer.name.toLowerCase().includes(searchParams.name)
+      && beer.abv > searchParams.abv 
+      && beer.first_brewed.slice(-4) < searchParams.year
+      && beer.ph < searchParams.maxPh);
+    setBeers(beerList);
+  };
 
   const handleInput = (event) => {
     const tempParams = {...searchParams};
     if (event.target.id==="name") {
-      tempParams.name = event.target.value.toLowerCase().split(" ").join("_");
+      tempParams.name = event.target.value.toLowerCase();
     } else if (event.target.id==="abv") {
       tempParams.abv = event.target.value;
     } else if (event.target.id==="year") {
@@ -34,30 +52,16 @@ const App = () => {
       tempParams.page--;
     } else if (event.target.id==="up") {
       tempParams.page++;
+    } else if (event.target.id==="maxph") {
+      tempParams.maxPh = event.target.value;
     }
     setSearchParams(tempParams);
   }
 
-  const createFetchUrl = () => {
-    let url = 'https://api.punkapi.com/v2/beers';
-
-    url += `?page=${searchParams.page}`
-    if(searchParams.name) url+= `&beer_name=${searchParams.name}`;
-    if(searchParams.abv) url +=`&abv_gt=${searchParams.abv}`;
-    if(searchParams.year) url += `&brewed_before=01-${searchParams.year}`
-    return url;
-  }
-
-  const [maxPh,setMaxPh] = useState(7);
-
-  const handlePhInput = (event) => {
-    setMaxPh(event.target.value);
-  }
-
   return (
     <div className="App">
-      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} maxPh={maxPh} handlePhInput={handlePhInput} />
-      <Main beers={beers} handleInput={handleInput} page={searchParams.page} maxPh={maxPh} />
+      <Navbar handleInput={handleInput} abv={searchParams.abv} year={searchParams.year} maxPh={searchParams.maxPh} />
+      {beers && <Main beers={beers} handleInput={handleInput} page={searchParams.page} maxPh={searchParams.maxPh} />}
     </div>
   );
 }
