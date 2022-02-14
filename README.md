@@ -40,7 +40,7 @@ Screenshots
 
 *Search Parameters*
 
-![Search Parameters](./screenshots/search.png)
+![Search Parameters](./screenshots/searchsliders.png)
 
 *Card Examples*
 
